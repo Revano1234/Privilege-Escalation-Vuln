@@ -1,4 +1,34 @@
-# NFS `no_root_squash` Privilege Escalation — Writeup
+# Privilege Escalation Vuln
+
+Dokumentasi teknik privilege escalation pada sistem Linux, disusun sebagai catatan pribadi dari eksplorasi CTF/lab. Setiap folder membahas satu vektor privesc secara spesifik, lengkap dengan konsep dasar, tahapan eksploitasi, dan kendala yang ditemui selama praktik.
+
+## Daftar Teknik
+
+| Folder | Vektor | Ringkasan |
+|---|---|---|
+| [`nfs-misconfigured`](./nfs-misconfigured) | NFS `no_root_squash` | Eksploitasi NFS share yang di-export dengan `no_root_squash`, memungkinkan attacker membuat binary SUID root dari mesin sendiri lalu mengeksekusinya di target untuk mendapat root shell |
+| [`nmap-sudo`](./nmap-sudo) | Sudo misconfiguration (`nmap`) | Eksploitasi konfigurasi sudo yang mengizinkan user menjalankan `nmap` sebagai root, memanfaatkan fitur interactive mode bawaan Nmap untuk mendapat shell root |
+
+## Struktur Repo
+
+```
+.
+├── nfs-misconfigured/
+│   └── README.md      # Writeup lengkap teknik NFS no_root_squash
+├── nmap-sudo/
+│   └── README.md      # Writeup lengkap teknik sudo nmap privesc
+└── README.md           # File ini
+```
+
+## Catatan
+
+- Dokumentasi ini dibuat untuk keperluan belajar (CTF/lab pribadi), bukan untuk digunakan pada sistem yang tidak dimiliki atau tanpa izin.
+- Setiap teknik disertai bagian kendala & solusi berdasarkan pengalaman praktik langsung, termasuk kesalahan umum yang sering terjadi (misal salah permission bit, mismatch versi glibc, dsb).
+
+## Referensi Umum
+
+- [GTFOBins](https://gtfobins.github.io/) — daftar binary Unix dan cara penyalahgunaannya jika punya SUID/sudo access
+- [HackTricks](https://book.hacktricks.xyz/) — referensi umum teknik privilege escalation Linux# NFS `no_root_squash` Privilege Escalation — Writeup
 
 Dokumentasi privilege escalation dari low-privilege user ke root dengan memanfaatkan NFS share yang di-export dengan opsi `no_root_squash`.
 
