@@ -8,6 +8,7 @@ Dokumentasi teknik privilege escalation pada sistem Linux, disusun sebagai catat
 |---|---|---|
 | [`nfs-misconfigured`](./nfs-misconfigured) | NFS `no_root_squash` | Eksploitasi NFS share yang di-export dengan `no_root_squash`, memungkinkan attacker membuat binary SUID root dari mesin sendiri lalu mengeksekusinya di target untuk mendapat root shell |
 | [`nmap-sudo`](./nmap-sudo) | Sudo misconfiguration (`nmap`) | Eksploitasi konfigurasi sudo yang mengizinkan user menjalankan `nmap` sebagai root, memanfaatkan fitur interactive mode bawaan Nmap untuk mendapat shell root |
+| [`passwd-writable`](./passwd-writable) | `/etc/passwd` writable | Eksploitasi file `/etc/passwd` yang salah permission (writable oleh user biasa), memungkinkan attacker menambahkan user baru dengan UID `0` langsung tanpa perlu menyentuh `/etc/shadow`, untuk mendapat akses root |
 
 ## Struktur Repo
 
@@ -18,6 +19,8 @@ Dokumentasi teknik privilege escalation pada sistem Linux, disusun sebagai catat
 ├── nmap-sudo/
 │   └── README.md      # Writeup lengkap teknik sudo nmap privesc
 └── README.md           # File ini
+├── passwd-writable/
+│   └── README.md      # Writeup lengkap teknik /etc/passwd writable
 ```
 
 ## Catatan
